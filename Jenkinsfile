@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        PATH = "/usr/local/bin/docker"
+        PATH = "/usr/local/bin:${env.PATH}"
         DOCKERHUB_CREDENTIALS = 'dockerhub-id'
         DOCKER_IMAGE = 'abhikkumar04/sci-calc:latest'
     }
