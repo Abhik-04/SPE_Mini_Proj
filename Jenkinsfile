@@ -1,16 +1,11 @@
 pipeline {
     agent any
     environment {
+        PATH = "/usr/local/bin/docker"
         DOCKERHUB_CREDENTIALS = 'dockerhub-id'
         DOCKER_IMAGE = 'abhikkumar04/sci-calc:latest'
     }
     stages {
-        stage('Check Docker') {
-            steps {
-                sh 'which docker'
-                sh 'docker --version'
-            }
-        }
         stage('Checkout') {
             steps {
                 git 'https://github.com/Abhik-04/SPE_Mini_Proj'
@@ -23,9 +18,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                script {
-                    dockerImage = docker.build(DOCKER_IMAGE)
-                }
+                sh "docker build -t ${DOCKER_IMAGE} ."
             }
         }
         stage('Push Docker Image') {
