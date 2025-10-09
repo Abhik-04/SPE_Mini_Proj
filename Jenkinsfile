@@ -5,6 +5,12 @@ pipeline {
         DOCKER_IMAGE = 'abhikkumar04/sci-calc:latest'
     }
     stages {
+        stage('Check Docker') {
+            steps {
+                sh 'which docker'
+                sh 'docker --version'
+            }
+        }
         stage('Checkout') {
             steps {
                 git 'https://github.com/Abhik-04/SPE_Mini_Proj'
