@@ -1,7 +1,6 @@
 pipeline {
     agent any
     environment {
-        PATH = "/usr/local/bin/docker"
         DOCKERHUB_CREDENTIALS = 'dockerhub-id'
         DOCKER_IMAGE = 'abhikkumar04/sci-calc:latest'
     }
@@ -18,7 +17,9 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh "docker build -t ${DOCKER_IMAGE} ."
+                script {
+                    dockerImage = docker.build(DOCKER_IMAGE)
+                }
             }
         }
         stage('Push Docker Image') {
