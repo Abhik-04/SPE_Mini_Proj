@@ -1,4 +1,3 @@
-# calculator.py
 import math
 
 def menu():
