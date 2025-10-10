@@ -50,9 +50,15 @@ pipeline {
     post {
         success {
             echo 'Pipeline succeeded!'
+            mail to: 'abhik.kumar04@gmail.com',
+            subject: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: "The build was successful!\nProject: ${env.JOB_NAME}\nBuild Number: ${env.BUILD_NUMBER}\nBuild URL: ${env.BUILD_URL}"
         }
         failure {
             echo 'Pipeline failed!'
+            mail to: 'abhik.kumar04@gmail.com',
+            subject: "FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: "The build failed!\nProject: ${env.JOB_NAME}\nBuild Number: ${env.BUILD_NUMBER}\nBuild URL: ${env.BUILD_URL}"
         }
     }
 }
