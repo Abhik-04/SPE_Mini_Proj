@@ -3,7 +3,7 @@ import math
 
 class TestCalc(unittest.TestCase):
     def test_sqrt(self):
-        self.assertEqual(math.sqrt(16), 4)
+        self.assertEqual(math.sqrt(9), 3)
 
     def test_factorial(self):
         self.assertEqual(math.factorial(5), 120)
