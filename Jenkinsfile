@@ -40,6 +40,12 @@ pipeline {
                 }
             }
         }
+        stage('Ansible Deploy') {
+            steps {
+                sh 'ansible-playbook deploy.yml'
+            }
+        }
+
     }
     post {
         success {
